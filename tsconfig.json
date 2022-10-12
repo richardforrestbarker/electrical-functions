@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target":"ES6",
+        "module": "commonjs",
+        "outDir": "dist",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "allowUnreachableCode":false,
+        "allowUnusedLabels":false,
+        "alwaysStrict": true,
+        "sourceMap": true
+    },
+    "include": [
+        "functions/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
