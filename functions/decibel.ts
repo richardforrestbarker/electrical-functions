@@ -1,31 +1,30 @@
 import constants from "./common/constants"
 /**
- * calculates the log (base 10) of the ratio between power in and power out
- * @param powerIn the power in to the circuit in watts
- * @param powerOut the power out to the circuit in watts
- * @returns the log (base 10) of the ratio between power in and power out
+ * calculates the decibel ratio between power in and power out: dB = 10 × log₁₀(P1/P2)
+ * @param powerIn the input power in watts
+ * @param powerOut the output power in watts
+ * @returns power ratio in decibels
  */
 export function db(powerIn: number, powerOut: number): number {
     const ratio = powerIn / powerOut;
-    return Math.log10(ratio);
+    return 10 * Math.log10(ratio);
 }
 
 /**
- * calculates the dBm 
- * @param powerIn the power in to the circuit in watts
- * @returns the log (base 10) of the ratio between power in and power out
+ * calculates the power level in dBm (relative to 1 milliwatt): dBm = 10 × log₁₀(P / 1mW)
+ * @param power power in watts
+ * @returns power level in dBm
  */
 export function dBm(power: number): number {
     const ratio = power / constants.scales.milli;
-    return Math.log10(ratio);
+    return 10 * Math.log10(ratio);
 }
+
 /**
- * 
- * @param dBm millidecibels
- * @returns power in watts assuming ration was to millidecibels
+ * converts a dBm value back to milliwatts: mW = 10^(dBm/10)
+ * @param dBm power level in dBm
+ * @returns power in milliwatts
  */
 export function power(dBm: number): number {
-    dBm = dBm / 10;
-    let p = Math.pow(10, dBm);
-    return p * constants.scales.milli;
+    return Math.pow(10, dBm / 10);
 }

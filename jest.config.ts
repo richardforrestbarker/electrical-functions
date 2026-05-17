@@ -5,7 +5,7 @@ import { defaults } from 'jest-config';
 const config: Config.InitialOptions = {
     verbose: true,
     transform: {
-    '^.+\\.tsx ? $': 'ts-jest',
+    '^.+\\.tsx?$': 'ts-jest',
   },
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
 };
